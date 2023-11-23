@@ -22,3 +22,19 @@ $plainPassword = "test";
 $hashedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
 
 $sql = "INSERT INTO users (username, password) VALUES (?,?)";
+?>
+```
+## Zadanie 2
+```
+<?php
+$usernameToCheck = "admin";
+$passwordToCheck = "test";
+$sql = "SELECT password FROM users WHERE username = ?";
+$hashedPasswordFromDatabase = "test1";
+if (password_verify($passwordToCheck, $hashedPasswordFromDatabase)) {
+    echo "Poprawne logowanie!";
+} else {
+    echo "Błędne hasło.";
+}
+?>
+```
