@@ -1,14 +1,9 @@
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $usernameInput = htmlspecialchars($_POST["username"]);
-        $passwordInput = htmlspecialchars($_POST["password"]);
-
-        if ($usernameInput === "admin" && $passwordInput === "test") {
-            $message = "Zalogowano pomyślnie";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-        } else {
-            $message = "Złe dane logowania";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-        }
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_POST["username"] === "admin" && $_POST["password"] === "test") {
+        echo "<script type='text/javascript'>alert('Zalogowano pomyślnie');</script>";
+    } else {
+        echo "<script type='text/javascript'>alert('Złe dane logowania');</script>";
     }
+}
 ?>
