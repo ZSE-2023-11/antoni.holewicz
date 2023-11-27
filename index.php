@@ -10,7 +10,7 @@
 $servername = "localhost";
 $username = "admin";
 $password = "test";
-$database = "Mariadb";
+$database = "baza";
 $conn = new mysqli($servername, $username, $password, $database);
 
 if ($conn->connect_error) {
@@ -21,19 +21,14 @@ if (isset($_POST['submitted'])) {
     $query = "SELECT * FROM users WHERE username='" . mysqli_real_escape_string($conn, $_POST['username']) . "' AND password='" . mysqli_real_escape_string($conn, $_POST['password']) . "'";
     $result = $conn->query($query);
 
-    if ($result->num_rows == 1) {
-        session_start();
-        $_SESSION["isLogged"] = "1";
-        header('Location: ../https://github.com/ZSE-2023-11/antoni.holewicz');
-        exit();
+    if ($result->num_rows > 0) {
+        $message = "Zalogowano pomyślnie.";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     } else {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
+        $message = "Błąd logowania.";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
 }
-
-$conn->close();
-
 ?>
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
