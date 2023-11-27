@@ -11,19 +11,12 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usernameInput = htmlspecialchars($_POST["username"]);
-    $passwordInput = htmlspecialchars($_POST["password"]);
-
-    $query = "SELECT * FROM users WHERE username = '$usernameInput' AND password = '$passwordInput'";
-    $result = $conn->query($query);
-
-    if ($result->num_rows > 0) {
-        $message = "Zalogowano pomyślnie";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+    if ($_POST["username"] === "admin" && $_POST["password"] === "test") {
+        echo "<script type='text/javascript'>alert('Zalogowano pomyślnie');</script>";
     } else {
-        $message = "Złe dane logowania";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        echo "<script type='text/javascript'>alert('Złe dane logowania');</script>";
     }
 }
+
 $conn->close();
 ?>
