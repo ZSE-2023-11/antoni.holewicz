@@ -14,7 +14,7 @@
 - Stosuje iteracje i sól do wzmacniania bezpieczeństwa.
 - Jest stosunkowo prosty w użyciu.
 
-### Zadanie 1
+### Kod do zapisu zaszyfrowanych danych w bazie.
 ```
 <?php
 $username = "admin";
@@ -24,7 +24,7 @@ $hashedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
 $sql = "INSERT INTO users (username, password) VALUES (?,?)";
 ?>
 ```
-## Zadanie 2
+## Kod sprawdzającego dane logowania z szyfrowaniem.
 ```
 <?php
 $usernameToCheck = "admin";
