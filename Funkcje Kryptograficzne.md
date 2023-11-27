@@ -24,7 +24,7 @@ $hashedPassword = password_hash($plainPassword, PASSWORD_BCRYPT);
 $sql = "INSERT INTO users (username, password) VALUES (?,?)";
 ?>
 ```
-## Kod sprawdzającego dane logowania z szyfrowaniem.
+## Kod sprawdzający dane logowania z szyfrowaniem.
 ```
 <?php
 $usernameToCheck = "admin";
